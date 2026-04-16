@@ -22,6 +22,11 @@ namespace LifeTrackerApp.Models
             {
                 throw new ArgumentException();
             }
+            Title = title;
+            Priority = priority;
+            DueDate = duedate;
+            ID++;
+            Id = ID;
 
         }
     }
