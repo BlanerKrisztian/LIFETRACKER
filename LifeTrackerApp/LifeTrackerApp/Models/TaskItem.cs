@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace LifeTrackerApp.Models
 {
-    internal class TaskItem
+    public class TaskItem
     {
-        private static int ID { get; set; }
         public int Id { get; private set; }
         public string Title { get; set; }
         public string Priority { get; set; }
@@ -16,16 +15,23 @@ namespace LifeTrackerApp.Models
         public bool IsCompleted { get; set; } = false;
         public DateTime CreatedAt { get; private set; } = DateTime.Now;
 
-        public TaskItem(string title, string priority, DateTime duedate)
+        public TaskItem(int ID, string title, string priority, DateTime duedate)
         {
-            if (title.Trim() == "" || !(priority != "Low" || priority != "Medium" || priority != "High") || DateTime.Now > duedate)
+            if (title.Trim() == "")
             {
-                throw new ArgumentException();
+                throw new ArgumentException("title");
             }
+            if (!(priority != "Low" || priority != "Medium" || priority != "High"))
+            {
+                throw new ArgumentException("priority");
+            }
+            /*if (DateTime.Now > duedate)
+            {
+                throw new ArgumentException("duedate");
+            }*/
             Title = title;
             Priority = priority;
             DueDate = duedate;
-            ID++;
             Id = ID;
 
         }
